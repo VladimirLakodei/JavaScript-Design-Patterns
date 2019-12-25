@@ -1,0 +1,32 @@
+<script>
+	class Counter {
+
+		constructor() {
+			if (typeof Counter.instance === 'object') {
+				return Counter.instance;
+			}
+			this.count = 0;
+			Counter.instance = this;
+			return this;
+		}
+		
+		getCount() {
+			return this.count;
+		}
+		
+		increaseCount() {
+			return this.count++;
+		}
+	}
+
+	const сounter1 = new Counter();
+	const сounter2 = new Counter(); // It is not new Counter. It is link to сounter1.
+
+	сounter1.increaseCount();
+	сounter1.increaseCount();
+	сounter2.increaseCount();
+	сounter2.increaseCount();
+
+	alert(`сounter1: ${сounter1.getCount()}`);
+	alert(`сounter2: ${сounter2.getCount()}`);
+</script>
